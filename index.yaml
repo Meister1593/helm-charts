@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  coturn:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-10-22T22:51:27.80518167Z"
+    description: Coturn helm charts
+    digest: 3bc92f3cce3a5e56d9da8238ecd71ef75314a5b0a7765b4b819007747e914f7b
+    name: coturn
+    type: application
+    urls:
+    - https://github.com/Meister1593/helm-charts/releases/download/coturn-0.1.2/coturn-0.1.2.tgz
+    version: 0.1.2
+generated: "2024-10-22T22:51:27.805188032Z"
