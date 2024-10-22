@@ -1,0 +1,10 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ include "coturn.fullname" . }}
+spec:
+  secretName: {{ .Values.coturn.tls.secretName }}
+  issuerRef:
+    {{- toYaml .Values.coturn.tls.issuerRef | nindent 4}}
+  dnsNames:
+    - {{ .Values.coturn.realm }}

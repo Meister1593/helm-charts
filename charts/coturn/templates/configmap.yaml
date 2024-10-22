@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "coturn.fullname" . }}
+data:
+  turnserver.conf: |
+    server-name={{ .Values.coturn.realm }}
+    realm={{ .Values.coturn.realm }}
+    external-ip={{ .Values.coturn.externalIp }}
+    listening-port={{ .Values.service.port }}
+    tls-listening-port={{ .Values.service.tlsPort }}
+    {{ if .Values.coturn.auth.staticSecret }}
+    use-auth-secret
+    static-auth-secret={{ .Values.coturn.auth.staticSecret }}
+    {{ else if and .Values.coturn.auth.username .Values.coturn.auth.password  }}
+    lt-cred-mech
+    user={{ .Values.coturn.auth.username }}:{{ .Values.coturn.auth.password }}
+    {{ end }}
+    user-quota={{ .Values.coturn.userQuota }}
+    total-quota={{ .Values.coturn.totalQuota }}
+    {{ if .Values.coturn.verbose }}
+    verbose
+    {{ end }}
+    {{- .Files.Get "turnserver.conf" | nindent 4 }}
