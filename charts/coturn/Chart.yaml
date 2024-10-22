@@ -1,6 +1,6 @@
 apiVersion: v2
 name: coturn
-description: Coturn helm charts for plyshka server
+description: Coturn helm charts
 
 # A chart can be either an 'application' or a 'library' chart.
 #
